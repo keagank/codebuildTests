@@ -6,7 +6,7 @@ phases:
       - echo $CODEBUILD_SOURCE_VERSION
       - PULL_REQUEST=true
       - echo $CODEBUILD_SOURCE_VERSION | grep -q "pr" || PULL_REQUEST=false
-      - if $PULL_REQUEST; then exit; fi
+      - if $PULL_REQUEST; then exit 0; fi
   build:
     commands:
-      - yum update -y
+      - apt-get update -y
