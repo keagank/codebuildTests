@@ -3,6 +3,6 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - DEPLY=true
-      - echo $CODEBUILD_SOURCE_VERSION | grep -q "pr" || DEPLOY=false
-      - if $DEPLY; then exit; fi
+      - DEPLOY=false
+      - echo $CODEBUILD_SOURCE_VERSION | grep -q "pr" || DEPLOY=true
+      - if [ $DEPLOY == false ]; then exit; fi
