@@ -3,4 +3,6 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - if [[ $CODEBUILD_SOURCE_VERSION =~ pr* ]]; then exit; fi
+      - PULL_REQUEST=true
+      - echo $CODEBUILD_SOURCE_VERSION | grep -q "pr" || PULL_REQUEST=false
+      - if $PULL_REQUEST; then exit; fi
