@@ -3,5 +3,6 @@ version: 0.2
 phases:
   pre_build:
     commands:
+      - echo $CODEBUILD_SOURCE_VERSION
       - grep -q "pr" $CODEBUILD_SOURCE_VERSION
       - if [ $? == 0 ]; then exit; fi
