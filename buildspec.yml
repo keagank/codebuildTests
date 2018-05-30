@@ -3,4 +3,5 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - if [[ $CODEBUILD_SOURCE_VERSION =~ pr* ]]; then exit; fi
+      - echo $CONDEBUILD_SOURCE_VERSION
+      - if [ $CODEBUILD_SOURCE_VERSION =~ pr* ]; then exit; fi
