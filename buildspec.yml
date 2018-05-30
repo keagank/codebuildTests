@@ -6,7 +6,6 @@ phases:
       - echo $CODEBUILD_SOURCE_VERSION
       - PULL_REQUEST=true
       - echo $CODEBUILD_SOURCE_VERSION | grep -q "pr" || PULL_REQUEST=false
-      - if $PULL_REQUEST; then exit 0; fi
-  build:
+  post_build:
     commands:
-      - apt-get update -y
+      - if $PULL_REQUEST; then echo "do nothing"; else echo "deploy code"; fi
